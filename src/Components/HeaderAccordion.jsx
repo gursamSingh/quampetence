@@ -15,21 +15,31 @@ const HeaderAccordion = (props) => {
 
   const headerDropdown = useRef();
 
+  const subHeader = useRef();
+
   useGSAP(() => {
     props.subTitle.forEach((_, index) => {
       const dropdown = document.querySelector(`#dropdown-${index}`);
 
-      if (!dropdown) return;
+      if (!dropdown || !subHeader) return;
 
       if (openIndex === index) {
         gsap.to(dropdown, {
           rotation: 180,
           duration: 0.2,
         });
+        gsap.to(subHeader, {
+          height: "0%",
+          duration: 0.6,
+        });
       } else {
         gsap.to(dropdown, {
           rotation: 0,
           duration: 0.2,
+        });
+        gsap.to(subHeader, {
+          x: "100%",
+          duration: 0.6,
         });
       }
     });
@@ -73,7 +83,7 @@ const HeaderAccordion = (props) => {
               </button>
             </div>
             {/* HERE I CAN CHECK IF IS OPEN IS TRUE => THEN OPEN THEN THE SUB ACCORDION */}
-            {isOpen && <SubHeaderAccordion />}
+            <SubHeaderAccordion isOpen={isOpen} />
           </div>
         );
       })}
