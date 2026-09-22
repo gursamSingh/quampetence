@@ -65,7 +65,7 @@ const Navbar = () => {
     <>
       <nav
         id="navbar"
-        className="h-20 w-full gap-2 md:gap-10 lg:gap-20 items-center justify-between shadow-2xl "
+        className="h-20 w-full gap-2 md:gap-10 lg:gap-20  justify-between shadow-2xl p-4"
       >
         <div id="header" className="h-full w-full flex items-center justify-between">
           <div id="logo">
@@ -82,9 +82,9 @@ const Navbar = () => {
             <div>link 3</div>
           </div>
 
-          <div className="sm:hidden mr-4">
+          <div className="sm:hidden ">
             <button
-              className="relative w-10 h-10"
+              className="relative w-8 h-8"
               onClick={() => {
                 setNavBar((prev) => !prev);
               }}
@@ -96,7 +96,7 @@ const Navbar = () => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="size-10 text-blue-quampetence absolute inset-0 "
+                className="size-8 text-blue-quampetence absolute inset-0"
               >
                 <path
                   strokeLinecap="round"
@@ -112,7 +112,7 @@ const Navbar = () => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="size-10 text-blue-quampetence absolute inset-0 "
+                className="size-8 text-blue-quampetence absolute inset-0 "
               >
                 <path
                   strokeLinecap="round"

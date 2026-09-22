@@ -46,7 +46,7 @@ const HeaderAccordion = (props) => {
           //   main outer div
           <div className="w-full text-black" key={index}>
             {/* inner div */}
-            <div className="m-2 flex justify-between text-md p-4 rounded-xs border-solid border-b border-prussian-blue-500 text-prussian-blue-500">
+            <div className="m-2 flex  items-center justify-between text-md p-4 rounded-xs border-solid border-b border-prussian-blue-500 text-prussian-blue-500">
               <span>{prop}</span>
               <button
                 className="relative"
@@ -62,7 +62,7 @@ const HeaderAccordion = (props) => {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="absolute size-5 text-prussian-blue-500 right-2"
+                  className=" size-5 text-prussian-blue-500"
                 >
                   <path
                     strokeLinecap="round"
