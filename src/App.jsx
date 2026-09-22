@@ -1,11 +1,14 @@
-import { useState } from "react";
-import heroImg from "./assets/hero.png";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "./assets/vite.svg";
 import "./App.css";
+import Navbar from "./Components/Navbar";
 
 function App() {
-  return <>Hello from Quampetence</>;
+  return (
+    <>
+      <div className="overflow-x-hidden">
+        <Navbar />
+      </div>
+    </>
+  );
 }
 
 export default App;
