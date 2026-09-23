@@ -10,15 +10,42 @@ gsap.registerPlugin(useGSAP);
 const Navbar = () => {
   const [navBar, setNavBar] = useState(false);
 
+  const menu = [
+    {
+      title: "Home",
+      subTitles: ["Hellow Workd"],
+    },
+    {
+      title: "About Us",
+      subTitles: ["Our Story", "Our Team", "Our Values"],
+    },
+    {
+      title: "Services",
+      subTitles: ["Customer Support", "Digital Marketing", "Sales"],
+    },
+    {
+      title: "Contact Us",
+      subTitles: ["Contact", "Locations"],
+    },
+  ];
+
   const mobileNavBar = useRef();
   const menuIcon = useRef();
   const closeIcon = useRef();
+  const backdrop = useRef();
+
   // Logic is basically when navbar is clicked the state changes to true and the navbar appears.
 
   // sets the navbar to the position
   useGSAP(() => {
     gsap.set(mobileNavBar.current, {
       x: "100%",
+    });
+
+    gsap.set(backdrop.current, {
+      opacity: 0,
+      backdropFilter: "blur(0px)",
+      pointerEvents: "none",
     });
   });
 
@@ -27,7 +54,14 @@ const Navbar = () => {
     if (navBar) {
       gsap.to(mobileNavBar.current, {
         x: "0%",
-        duration: 0.6,
+        duration: 0.4,
+      });
+
+      gsap.to(backdrop.current, {
+        opacity: 1,
+        backdropFilter: "blur(2px)",
+        pointerEvents: "auto",
+        duration: 0.4,
       });
 
       gsap.to(menuIcon.current, {
@@ -44,9 +78,14 @@ const Navbar = () => {
     } else {
       gsap.to(mobileNavBar.current, {
         x: "100%",
-        duration: 0.6,
+        duration: 0.4,
       });
-
+      gsap.to(backdrop.current, {
+        opacity: 0,
+        backdropFilter: "blur(0px)",
+        pointerEvents: "none",
+        duration: 0.4,
+      });
       gsap.to(menuIcon.current, {
         opacity: 1,
         scale: 1,
@@ -65,9 +104,9 @@ const Navbar = () => {
     <>
       <nav
         id="navbar"
-        className="h-20 w-full gap-2 md:gap-10 lg:gap-20  justify-between shadow-2xl p-4"
+        className="h-20 w-full gap-2 md:gap-10 lg:gap-20  justify-between shadow-2xl p-4 "
       >
-        <div id="header" className="h-full w-full flex items-center justify-between">
+        <div id="header" className="h-full w-full flex items-center justify-between z-60">
           <div id="logo">
             {/* Logo */}
             <img className="w-40 ml-4" src="src/assets/QBS_Logo.png" alt="" />
@@ -84,7 +123,7 @@ const Navbar = () => {
 
           <div className="sm:hidden ">
             <button
-              className="relative w-8 h-8"
+              className="relative w-8 h-8 mr-2.5"
               onClick={() => {
                 setNavBar((prev) => !prev);
               }}
@@ -127,21 +166,18 @@ const Navbar = () => {
         {/* Mobile Version Hamburger Menu */}
         <div
           ref={mobileNavBar}
-          className="fixed right-0 sm:hidden w-full h-[calc(100vh-5rem)] bg-white text-black"
+          className=" fixed top-20 left-0 right-0 sm:hidden w-full rounded-b-xl text-black z-50"
         >
-          <div className=" text-white">
+          <div className=" text-white rounded-b-xl">
             <div>
-              <HeaderAccordion
-                subTitle={[
-                  "Home",
-                  "About Us",
-                  "Recognitions",
-                  "Contact Us",
-                  "Hello World",
-                ]}
-              />
+              <HeaderAccordion menu={menu} />
             </div>
           </div>
+          <div
+            ref={backdrop}
+            onClick={() => setNavBar(false)}
+            className="absolute top-full left-0 w-screen h-screen bg-gray-100/10"
+          />
         </div>
       </nav>
     </>

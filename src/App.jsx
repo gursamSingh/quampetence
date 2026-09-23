@@ -4,9 +4,10 @@ import Navbar from "./Components/Navbar";
 function App() {
   return (
     <>
-      <div className="overflow-x-hidden">
+      <div className="overflow-x-hidden ">
         <Navbar />
       </div>
+      <div className="text-black fixed bottom-6">GJHKghkgdkhjagd</div>
     </>
   );
 }
